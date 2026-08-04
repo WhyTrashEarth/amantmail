@@ -1,46 +1,34 @@
-# Astro Starter Kit: Basics
+# AmantMail
 
-```sh
-npm create astro@latest -- --template basics
-```
+Professional email.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+*Mostly for Alec.*
 
-## 🚀 Project Structure
+AmantMail is a private email domain used for correspondence, newsletters, and explaining what AmantMail is to people who asked.
 
-Inside of your Astro project, you'll see the following folders and files:
+It is not a public email provider.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+## About
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+AmantMail is a polished, single-page website built around one simple question:
 
-## 🧞 Commands
+> What is AmantMail?
 
-All commands are run from the root of the project, from a terminal:
+The website presents the domain with the visual language of a premium technology company while gradually revealing that it exists for precisely one user.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+The humor is intentionally restrained. The site never presents itself as parody.
 
-## 👀 Want to learn more?
+## Technology
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- [Astro](https://astro.build/)
+- Plain CSS
+- Minimal JavaScript
+- Cloudflare Pages
+- Proton Mail with a custom domain
+
+## Development
+
+Install dependencies:
+
+```bash
+npm install
