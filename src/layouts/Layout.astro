@@ -1,23 +1,134 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+
+const { title, description, noindex = false } = Astro.props;
+const home = Astro.url.pathname === "/";
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const image = new URL("/amantmail-social.png", Astro.site);
+const imageAlt = "AmantMail. Professional email. Mostly for Alec.";
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AmantMail" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href={home ? "#top" : "/"} aria-label="Amant Mail home">
+          <svg
+            class="brand-icon"
+            viewBox="0 0 48 48"
+            aria-hidden="true"
+          >
+            <rect
+              x="4"
+              y="8"
+              width="40"
+              height="32"
+              rx="7"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+            <path
+              d="M7 13L24 27L41 13"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+          <span class="brand-wordmark">Amant <em>Mail</em></span>
+        </a>
+
+        <nav class="desktop-navigation" aria-label="Main navigation">
+          <a href={home ? "#about" : "/#about"}>About</a>
+          <a href={home ? "#infrastructure" : "/#infrastructure"}>Infrastructure</a>
+          <a href={home ? "#security" : "/#security"}>Security</a>
+          <a href={home ? "#faq" : "/#faq"}>FAQ</a>
+        </nav>
+
+        <div class="status">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Operational</span>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>No accounts. No subscriptions. No investors. Just email.</p>
+
+        <div class="footer-links">
+          <a href="/privacy/" aria-current={Astro.url.pathname === "/privacy/" ? "page" : undefined}>Privacy</a>
+          <a href="https://amantdeleant.com/">Amant Deleant</a>
+          <button
+            class="version-button"
+            id="version-button"
+            type="button"
+            aria-expanded="false"
+            aria-controls="version-message"
+          >
+            Version 1.0
+          </button>
+        </div>
+      </div>
+
+      <div class="container">
+        <p class="version-message" id="version-message" hidden>
+          Built an entire website to explain one email address. Mission
+          accomplished.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      const versionButton = document.querySelector("#version-button");
+      const versionMessage = document.querySelector("#version-message");
+      versionButton?.addEventListener("click", () => {
+        if (!(versionMessage instanceof HTMLElement)) return;
+        versionMessage.hidden = !versionMessage.hidden;
+        versionButton.setAttribute("aria-expanded", String(!versionMessage.hidden));
+      });
+    </script>
+  </body>
+</html>

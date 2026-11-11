@@ -1,0 +1,22 @@
+---
+import Layout from "../layouts/Layout.astro";
+import EmailLink from "../components/EmailLink.astro";
+---
+<Layout title="Privacy — AmantMail" description="What happens when you visit AmantMail or send Alec an email.">
+  <article class="container reading-page">
+    <h1>Privacy</h1>
+    <h2>Visiting the site</h2>
+    <p>
+      Cloudflare hosts AmantMail. It receives request details such as your IP address
+      and the page you visit to deliver and protect the site. We use <a href="https://developers.cloudflare.com/web-analytics/">Cloudflare Web Analytics</a> to measure visits and page speed without using analytics cookies.
+    </p>
+    <p>The site serves its own fonts and has no advertising, account forms, or waitlist.</p>
+    <h2>Emailing Alec</h2>
+    <p>
+      The email links open your mail app. If you send a message, Alec receives your
+      address and whatever you include in his Proton Mail inbox. He uses it to read
+      and reply to your correspondence.
+    </p>
+    <p>Privacy questions go to <EmailLink />.</p>
+  </article>
+</Layout>

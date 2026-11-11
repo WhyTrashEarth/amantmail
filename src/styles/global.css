@@ -1,4 +1,26 @@
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap");
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../assets/fonts/instrument-serif-italic.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../assets/fonts/instrument-serif-normal.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(../assets/fonts/manrope-normal.woff2) format('woff2');
+}
 
 /* ========================================
    AmantMail design tokens
@@ -181,7 +203,7 @@ svg {
   top: 0;
   z-index: 100;
   border-bottom: 1px solid rgba(41, 41, 41, 0.8);
-  background: rgba(10, 10, 10, 0.82);
+  background: rgba(10, 10, 10, 0.94);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 }
@@ -730,6 +752,10 @@ blockquote footer {
   transition: opacity var(--transition-fast);
 }
 
+.closing-section :focus-visible {
+  outline-color: var(--color-background);
+}
+
 .email-address:hover {
   opacity: 0.65;
 }
@@ -755,6 +781,30 @@ blockquote footer {
   color: var(--color-muted);
   font-size: 0.72rem;
   letter-spacing: 0.02em;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.4rem;
+}
+
+.footer-links a,
+.version-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  color: var(--color-muted);
+  font-size: 0.72rem;
+}
+
+.footer-links a {
+  text-underline-offset: 0.2em;
+}
+
+.footer-links a:hover {
+  color: var(--color-text);
 }
 
 .version-button {
@@ -787,6 +837,46 @@ blockquote footer {
 
 .version-message[hidden] {
   display: none;
+}
+
+.reading-page {
+  padding-block: clamp(4rem, 9vw, 8rem);
+  min-height: 65vh;
+}
+
+.reading-page h1,
+.reading-page h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.reading-page h1 {
+  font-size: clamp(3.8rem, 8vw, 7rem);
+  margin: 0 0 2.75rem;
+}
+
+.reading-page h2 {
+  margin: 2.25rem 0 0.75rem;
+  font-size: clamp(1.9rem, 4vw, 2.5rem);
+}
+
+.reading-page p {
+  max-width: 62ch;
+  margin: 0.75rem 0;
+  color: var(--color-muted);
+}
+
+.reading-page a,
+.faq-item p a {
+  color: var(--color-text);
+  text-underline-offset: 0.18em;
+}
+
+.reading-page a:hover,
+.faq-item p a:hover {
+  color: var(--color-accent);
 }
 
 /* ========================================
